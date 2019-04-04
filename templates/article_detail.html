@@ -1,0 +1,55 @@
+{% extends 'base.html' %}{% load static %} {% block nav %}
+<nav>
+    <div class="nav-wrapper light-green">
+        <div class="col s12">
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">{{ article.title }}</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}{% block content %}
+<div class="card">
+    <div class="card-content">
+        <a href="{% url 'article_detail' id=article.id %}">
+            <span class="card-title" style="font-weight:bold">{{ article.title }}</span>
+        </a>
+        <p class="orange-text text-light-1">
+            {{ article.publish_time }}
+        </p>
+        {% for tag in article.tags.all %}
+        <a href="{% url 'article_tag' tag_name=tag %}">
+            <div class="chip light-green white-text">
+                {{ tag }}
+            </div>
+        </a>
+        {% endfor %}
+        <script>
+            function setIframeHeight(iframe) {
+                if (iframe) {
+                    var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                    if (iframeWin.document.body) {
+                        iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body
+                            .scrollHeight;
+                    }
+                }
+            };
+            window.onload = function () {
+                setIframeHeight(document.getElementById('external-frame'));
+            };
+        </script>
+        <iframe src="{{ article.body.url }}" frameborder="0" scrolling="no" id="external-frame"
+            onload="setIframeHeight(this)" width="100% "></iframe>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.parallax ').parallax();
+    });
+</script>
+<style>
+    .parallax-container {
+        margin: 0.5rem 0 1rem 0;
+        height: 250px;
+    }
+</style>
+{% endblock %}

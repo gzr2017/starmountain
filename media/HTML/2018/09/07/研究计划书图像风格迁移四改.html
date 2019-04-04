@@ -1,0 +1,580 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>研究计划书——图像风格迁移【四改】</title><link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: 'Lucida Console',Consolas,'Courier',monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Open Sans Regular'),url('file:///Users/guozirui/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Open Sans Italic'),url('file:///Users/guozirui/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans Bold'),url('file:///Users/guozirui/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Open Sans Bold Italic'),url('file:///Users/guozirui/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff')
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write{
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 20px 30px 40px 30px;
+	padding-top: 20px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    /*background: url("file:///Users/guozirui/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 4px 2px 4px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 0.2em 1em;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+ .typora-export p, .typora-export .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><h1><a name='header-n3' class='md-header-anchor '></a>一、研究背景</h1><p>自2000年以来，越来越多的计算机科学家进入了图像风格迁移领域。如2014年由<em>YiChang Shih</em>发表的论文《<em>Style transfer for headshot portraits</em>》<sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup>主要用于头像风格迁移。2015年<em>Amir Semmo</em>发表的论文《<em>Image Stylization by Oil Paint Filtering using Color Palettes</em>》<sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup>用于将照片转换为油画风格。但这些方法互相之间没有共通之处，只能适用于某一种特定的风格。</p><p>直到2015年8月，<em>Leon Gatys</em>在<em>VGG19</em>算法<sup class='md-footnote'><a href='#dfref-footnote-3' name='ref-footnote-3'>3</a></sup>的基础上提出了基于人工神经网络（<em>Artificial Neural Network</em>）的图像风格迁移（<em>Style Transfer</em>）算法<sup class='md-footnote'><a href='#dfref-footnote-4' name='ref-footnote-4'>4</a></sup>。有了人工神经网络的助力，图像风格迁移有了长足的发展。图像风格迁移不论是在学术界还是工业界都取得了很大的进展。从2016年开始，一系列商用项目如<em>Prisma</em>、<em>Ostagram</em>、<em>Deep Forger</em>等在图像风格迁移领域都取得了成功<sup class='md-footnote'><a href='#dfref-footnote-5' name='ref-footnote-5'>5</a></sup>。</p><p>转入2017年，大家都将目光投向了如何让风格迁移更加真实的问题上。2017年4月，康奈尔大学和<em>Adobe</em>联合发布了<em>Deep Photo Style</em>算法<sup class='md-footnote'><a href='#dfref-footnote-6' name='ref-footnote-6'>6</a></sup>，让图像风格迁移能够应用于对真实度要求很高的照片上。2017年9月，上海交通大学和微软亚洲研究院联合发表了论文《<em>Visual Attribute Transfer through Deep Image Analogy</em>》<sup class='md-footnote'><a href='#dfref-footnote-7' name='ref-footnote-7'>7</a></sup>更达到了像素级的风格迁移。2018年，<em>NVIDIA</em>发表的<em>Fast Photo Style</em>算法<sup class='md-footnote'><a href='#dfref-footnote-8' name='ref-footnote-8'>8</a></sup>能使两张照片之间风格合成的速度提高60倍。</p><p>图像风格迁移现在已经成为了一个较为成熟的领域，无论是在风格迁移精细度还是计算速度上都有很大的提升。</p><h1><a name='header-n8' class='md-header-anchor '></a>二、先行研究</h1><ul><li><h2><a name='header-n11' class='md-header-anchor '></a>风格迁移前身——特征提取与纹理迁移</h2><p>在神经网络尚未应用于图像风格迁移之前，已有学者就图像风格迁移在计算机图形学（<em>Computer Graphics</em>）下的图像艺术风格渲染（<em>Non-photorealistic Rendering</em>）领域和基于统计学的计算机视觉（<em>Computer Vision</em>）领域开展研究<sup class='md-footnote'><a href='#dfref-footnote-5-1' name='ref-footnote-5-1'>5</a></sup>。现在基于人工神经网络的图像风格迁移就是由计算机视觉领域下的纹理合成（<em>Texture Synthesis</em>）发展而来。那时的方法主要是手工对图像纹理进行建模。虽然这些研究成果未应用于现在的基于神经网络的风格迁移，但这些研究成果给后面的研究一个重要思想，那就是纹理可以用图像局部特征的统计模型来描述。</p></li><li><h2><a name='header-n14' class='md-header-anchor '></a>风格迁移奠基——<em>VGG19</em>与<em>Neural Style</em></h2><ul><li><h3><a name='header-n17' class='md-header-anchor '></a><em>VGG</em>模型架构与物体识别</h3><p>2014年，<em>VGG</em>模型架构由<em>Simonyan</em>和<em>Zisserman</em>提出<sup class='md-footnote'><a href='#dfref-footnote-3-1' name='ref-footnote-3-1'>3</a></sup>。这个网络的主要特征是使用<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-1-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.162ex" height="1.994ex" viewBox="0 -755.9 2222.4 858.4" role="img" focusable="false" style="vertical-align: -0.238ex;"><defs><path stroke-width="0" id="E1-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E1-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-33" x="0" y="0"></use><use xlink:href="#E1-MJMAIN-D7" x="722" y="0"></use><use xlink:href="#E1-MJMAIN-33" x="1722" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-1">3\times 3</script>的小卷积核对图像进行卷积，并把这些小的卷积核排列起来作为一个卷积序列。</p><p>1998年发布的神经网络<em>LeNet</em><sup class='md-footnote'><a href='#dfref-footnote-9' name='ref-footnote-9'>9</a></sup>和2012年发布的<em>AlexNet</em><sup class='md-footnote'><a href='#dfref-footnote-10' name='ref-footnote-10'>10</a></sup>等神经网络都是用大的卷积核进行卷积，因为他们相信大的卷积核能够捕获图像当中相似的特征。但<em>VGG</em>架构证明，使用小的卷积核对图像进行连续卷积可以模仿较大卷积核对图像进行局部感知。虽然使用小卷积核会使训练时间变长，但小卷积核可以减少参数数量和缩短预测时间。</p><p><em>VGG</em>模型对物体识别的优良效果成为了<em>Leon Gatys</em>选择其作为他论文的神经网络架构的原因。<em>VGG19</em>在不同卷积层可以提取出原图像的底层或高层特征。<em>Leon Gatys</em>发现，这些底层特征或者高层特征可以用于提取图像的内容和风格信息。通过融合不同图片中提取出的内容信息和风格信息，就可以做到风格迁移。</p></li><li><h3><a name='header-n22' class='md-header-anchor '></a><em>Leon Gatys</em>的图像风格迁移算法</h3><ul><li><h4><a name='header-n25' class='md-header-anchor '></a>用深度学习来给纹理建模：《<em>Texture Synthesis Using Convolutional Neural Networks</em>》<sup class='md-footnote'><a href='#dfref-footnote-11' name='ref-footnote-11'>11</a></sup></h4><p><em>Leon Gatys</em>在发表神经风格迁移领域的重要论文《<em>A Neural Algorithm of Artistic Style</em>》<sup class='md-footnote'><a href='#dfref-footnote-4-1' name='ref-footnote-4-1'>4</a></sup>之前发表一篇题为《<em>Texture Synthesis Using Convolutional Neural Networks</em>》<sup class='md-footnote'><a href='#dfref-footnote-11-1' name='ref-footnote-11-1'>11</a></sup>的论文。在这篇论文里，他率先提出了基于人工神经网络的纹理建模方法。</p><p>这篇论文没有重新训练系数矩阵，而是使用官方已经训练好的<em>VGG19</em>网络。<em>Gatys</em>使用<em>Gram Matrix</em>对<em>VGG19</em>网络某些卷积层上的特征空间计算相关性，利用得到的<em>Gram Matrix</em>来表示一种纹理。<em>Gatys</em>成功将局部特征变成了一个统计模型，这样就可以不用手工建模生成纹理了。</p></li><li><h4><a name='header-n29' class='md-header-anchor '></a>使用深度学习的图像风格迁移算法：《<em>A Neural Algorithm of Artistic Style</em>》<sup class='md-footnote'><a href='#dfref-footnote-4-2' name='ref-footnote-4-2'>4</a></sup></h4><p>图像分为风格和内容两部分。<em>Leon Gatys</em>利用<em>Gram Matrix</em>得到的纹理即是图像的风格信息。在这篇论文中，<em>Gatys</em>使用卷积神经网络的各个卷积层得到的特征之间的相关性获取纹理信息。通过引入卷积层之间的相关性，<em>Gatys</em>获得了对原图稳定的，多尺度的表示，能够得到参考艺术作品的纹理信息。</p><p><em>Gatys</em>在论文中分别使用<em>VGG19</em>的不同几层来测试重构效果，最终发现使用低层的特征能够很好地对原始图像进行细致的重构，但风格效果不明显。而使用高层的特征来重构的时候细节出现了丢失，但是图像中的高层结构信息却保留了下来。因此使用高层特征能够更好地对图像内容进行重构。</p><p><em>Gatys</em>通过输入原图，在较深层的卷积层中得到的特征进行图像内容约束；使用风格图像在卷积神经网络中各个卷积层得到的特征之间的相关性学习得到图像纹理，进行纹理约束，从而优化得到最终结果。</p></li></ul></li></ul></li><li><h2><a name='header-n34' class='md-header-anchor '></a>风格迁移优化——内容匹配与结构保留</h2><ul><li><h3><a name='header-n37' class='md-header-anchor '></a>Controlling Perceptual Factors</h3><p>在《<em>A Neural Algorithm of Artistic Style</em>》<sup class='md-footnote'><a href='#dfref-footnote-4-3' name='ref-footnote-4-3'>4</a></sup>这篇论文里，由于使用高层特征重构，所以图像的细节有所丢失。Gatys在2016年又发表了一篇论文《<em>Controlling Perceptual Factors in Neural Style Transfer</em>》<sup class='md-footnote'><a href='#dfref-footnote-12' name='ref-footnote-12'>12</a></sup>讨论如何控制细节丢失。</p><p>这篇论文提出，图像风格可以被分解为空间区域、颜色与光照信息和跨空间尺度这三个因素。对于空间因素的控制，通过引入一个新的空间引导矩阵，来控制风格图像的哪一部分用来风格化内容图像对应的图像区域。对于颜色因素的控制，可以只采用亮度通道进行迁移或者颜色直方图匹配方法来实现。对于空间尺度因素的控制，通过选择神经网络中不同层对应的统计信息进行风格迁移来实现。</p><p>这三种方法对图像迁移的优化有很好的效果，对后面的工作有很好的启发作用。但是这种方法仍只用于照片和绘画之间的风格迁移。</p></li><li><h3><a name='header-n42' class='md-header-anchor '></a><em>Deep Photo Style</em></h3><p>在《<em>Deep Photo Style Transfer</em>》<sup class='md-footnote'><a href='#dfref-footnote-6-1' name='ref-footnote-6-1'>6</a></sup>这篇论文之前，风格迁移的效果图都是绘画风。即使输入是写实的照片，输出也会有一些失真的畸变。这篇论文与<em>Leon Gatys</em>的思想一致的地方在于控制了图片的色彩和分区域进行风格迁移。</p><p>这篇论文引入了一种把风格迁移限制为局部区域色彩空间上仿射变换的约束条件，即尽量只改变照片的颜色，而不改变纹理等特征。另外在向内容照片中融入风格照片的风格时，要保证场景匹配。在<em>Gatys</em>的方法中，由于表示风格的<em>Gram矩阵</em>表示的是整个图片上的整体分布，而内容图片中的场景可能比风格图像片中的对应场景小，这样就会导致风格溢出情况。为了解决这个问题，在风格迁移之前会对内容照片和风格照片进行语义分割。在计算风格损失时将原始的风格损失乘以分割的掩码。这样就可以将风格控制在一定范围内。</p><p>这种方法的主要缺陷在于需要高精度的语义分割和生成速度慢。</p></li><li><h3><a name='header-n47' class='md-header-anchor '></a><em>Deep Image Analogy</em></h3><p>廖菁等人发表的论文《<em>Visual Attribute Transfer through Deep Image Analogy</em>》<sup class='md-footnote'><a href='#dfref-footnote-7-1' name='ref-footnote-7-1'>7</a></sup>的主要贡献在于把<em>PatchMatch</em><sup class='md-footnote'><a href='#dfref-footnote-13' name='ref-footnote-13'>13</a></sup>算法扩展到了特征领域。</p><p>原图像和风格图像通过<em>VGG19</em>提取特征之后，顶层的卷积层会输出一个粗粒度的特征图。因为输出图像在内容上和原图像结构基本保持相同，所以可以近似认为输出图像在经过<em>VGG19</em>提取特征之后顶层的卷积层输出的特征图和原图像相等。这样我们就可以通过源图像的顶层特征图进行反卷积来重建输出图像。</p><p>在重建过程中，为了融合风格图像的特征，输出图像的前一层特征图不能简单使用源图像的反卷积结果。廖菁等人首先对风格图像使用<em>PatchMatch</em>与源图像进行结构匹配变形，得到经过变形的风格图像。然后使输出图像的前一层特征图同时参考源图像和经过变形的风格图像的反卷积结果。每经过一次反卷积，源图像反卷积结果的比重会下降，经过变形的风格图像反卷积结果的比重会上升。这样可以在高层抽象特征上参考源图像而在像素细节上参考风格图像。</p><p>这个算法适用范围十分广泛。对于绘画与绘画之间、绘画与照片之间、照片与照片之间的风格迁移都有很好的效果。但只能适用于语义相近的图片之间的风格迁移。</p></li><li><h3><a name='header-n53' class='md-header-anchor '></a><em>Whitening and Coloring Transform</em></h3><p>李一君等人的论文《<em>Universal Style Transfer via Feature Transforms</em>》<sup class='md-footnote'><a href='#dfref-footnote-14' name='ref-footnote-14'>14</a></sup>提出了一种可以转换任意的风格图片，而不需要进行预先训练的方法。论文中提出的<em>WCT</em>层是日后<em>Fast Photo Style</em>算法的重要基础。</p><p>论文中先在<em>COCO</em>数据集上训练出通用的编码器（<em>Encoder</em>）和解码器（<em>Decoder</em>），实现图片的重建。作者采用<em>VGG-19</em>网络作为编码器，解码器则被设计成<em>VGG-19</em>的对称网络。</p><p>原图像与风格图像被同时编码，通过编码器后输入到<em>WCT</em>层（<em>whitening and coloring transform layer</em>）。<em>whitening transform</em>能够把一张图片的风格信息抹去，而保留原有高级语义信息，之后应用<em>coloring transform</em>将风格图的颜色进行迁移，这样即可重建出效果不错的风格化结果。通过<em>WCT</em>层后再输入到解码器中，完成图像的重建。</p></li><li><h3><a name='header-n58' class='md-header-anchor '></a><em>Fast Photo Style</em></h3><p><em>NVIDIA</em>发表的论文《<em>A Closed-Form Solution to Photorealistic Image Stylization</em>》<sup class='md-footnote'><a href='#dfref-footnote-8-1' name='ref-footnote-8-1'>8</a></sup>提出的<em>Fast Photo Style</em>算法首先进行照片的风格化，然后细调（<em>Photorealistic Smoothing</em>）。其中风格化步骤是基于上面的<em>WCT</em>算法改进后的<em>PhotoWCT</em>算法。这个算法解决了<em>WCT</em>算法输出中存在的结构失真问题。</p><p><em>WCT</em>算法中，特征图的空间信息在最大池化（<em>max pooling</em>）过程中受到了损失，简单的上采样（<em>upsampling</em>）无法重建输入图像中的详细结构。所以需要把池化层（<em>pooling</em>）中损失的空间信息传递到解码器中。在<em>PhotoWCT</em>算法中用反池化层（<em>unpooling</em>）代替了上采样层（<em>upsampling</em>），将特征提取层中的池化层位置信息引入到了对称的层中。在细调过程中会比对风格图，让局部邻域中具有相似内容的像素套入相同的风格。同时优化函数加入正则化项，使细调的结果不会显著的远离<em>PhotoWCT</em>的结果。</p><p>与现有算法最大的不同是<em>Fast Photo Style</em>并不需经过迭代运算的过程，每个步骤是独立进行的，这样能够让处理速度提升60倍。</p></li></ul></li></ul><div class='footnotes-area'  ><hr/>
+<div class='footnote-line'><span class='md-fn-count'>1</span> Shih, YiChang, Sylvain Paris, Connelly Barnes, William T. Freeman, and Frédo Durand. “Style Transfer for Headshot Portraits.” ACM Transactions on Graphics 33, no. 4 (July 27, 2014): 1–14. <a href='https://doi.org/10.1145/2601097.2601137' target='_blank' class='url'>https://doi.org/10.1145/2601097.2601137</a>.<a name='dfref-footnote-1' href='#ref-footnote-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>2</span> Semmo, Amir, Daniel Limberger, Jan Eric Kyprianidis, and Jürgen Döllner. “Image Stylization by Oil Paint Filtering Using Color Palettes.” The Eurographics Association, 2015. <a href='https://doi.org/10.2312/exp.20151188' target='_blank' class='url'>https://doi.org/10.2312/exp.20151188</a>.<a name='dfref-footnote-2' href='#ref-footnote-2' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>3</span> Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” ArXiv:1409.1556 [Cs], September 4, 2014. <a href='http://arxiv.org/abs/1409.1556' target='_blank' class='url'>http://arxiv.org/abs/1409.1556</a>.<a name='dfref-footnote-3' href='#ref-footnote-3' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-3-1' href='#ref-footnote-3-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>4</span> Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge. “A Neural Algorithm of Artistic Style.” ArXiv:1508.06576 [Cs, q-Bio], August 26, 2015. <a href='http://arxiv.org/abs/1508.06576' target='_blank' class='url'>http://arxiv.org/abs/1508.06576</a>.<a name='dfref-footnote-4' href='#ref-footnote-4' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-4-1' href='#ref-footnote-4-1' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-4-2' href='#ref-footnote-4-2' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-4-3' href='#ref-footnote-4-3' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>5</span> Jing, Yongcheng, Yezhou Yang, Zunlei Feng, Jingwen Ye, Yizhou Yu, and Mingli Song. “Neural Style Transfer: A Review.” ArXiv:1705.04058 [Cs, Eess, Stat], May 11, 2017. <a href='http://arxiv.org/abs/1705.04058' target='_blank' class='url'>http://arxiv.org/abs/1705.04058</a>.<a name='dfref-footnote-5' href='#ref-footnote-5' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-5-1' href='#ref-footnote-5-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>6</span> Luan, Fujun, Sylvain Paris, Eli Shechtman, and Kavita Bala. “Deep Photo Style Transfer.” ArXiv:1703.07511 [Cs], March 22, 2017. <a href='http://arxiv.org/abs/1703.07511' target='_blank' class='url'>http://arxiv.org/abs/1703.07511</a>.<a name='dfref-footnote-6' href='#ref-footnote-6' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-6-1' href='#ref-footnote-6-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>7</span> Liao, Jing, Yuan Yao, Lu Yuan, Gang Hua, and Sing Bing Kang. “Visual Attribute Transfer through Deep Image Analogy.” ArXiv:1705.01088 [Cs], May 2, 2017. <a href='http://arxiv.org/abs/1705.01088' target='_blank' class='url'>http://arxiv.org/abs/1705.01088</a>.<a name='dfref-footnote-7' href='#ref-footnote-7' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-7-1' href='#ref-footnote-7-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>8</span> Li, Yijun, Ming-Yu Liu, Xueting Li, Ming-Hsuan Yang, and Jan Kautz. “A Closed-Form Solution to Photorealistic Image Stylization.” ArXiv:1802.06474 [Cs], February 18, 2018. <a href='http://arxiv.org/abs/1802.06474' target='_blank' class='url'>http://arxiv.org/abs/1802.06474</a>.<a name='dfref-footnote-8' href='#ref-footnote-8' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-8-1' href='#ref-footnote-8-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>9</span> LeCun, Yann, Leon Bottou, Yoshua Bengio, and Patrick Ha. “Gradient-Based Learning Applied to Document Recognition,” 1998, 46.<a name='dfref-footnote-9' href='#ref-footnote-9' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>10</span> Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. “ImageNet Classification with Deep Convolutional Neural Networks.” Communications of the ACM 60, no. 6 (May 24, 2017): 84–90. <a href='https://doi.org/10.1145/3065386' target='_blank' class='url'>https://doi.org/10.1145/3065386</a>.<a name='dfref-footnote-10' href='#ref-footnote-10' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>11</span> Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge. “Texture Synthesis Using Convolutional Neural Networks.” ArXiv:1505.07376 [Cs, q-Bio], May 27, 2015. <a href='http://arxiv.org/abs/1505.07376' target='_blank' class='url'>http://arxiv.org/abs/1505.07376</a>.<a name='dfref-footnote-11' href='#ref-footnote-11' title='回到文档' class='reversefootnote' >↩</a><a name='dfref-footnote-11-1' href='#ref-footnote-11-1' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>12</span> Gatys, Leon A., Alexander S. Ecker, Matthias Bethge, Aaron Hertzmann, and Eli Shechtman. “Controlling Perceptual Factors in Neural Style Transfer.” <em>ArXiv:1611.07865 [Cs]</em>, November 23, 2016. <a href='http://arxiv.org/abs/1611.07865' target='_blank' class='url'>http://arxiv.org/abs/1611.07865</a>.<a name='dfref-footnote-12' href='#ref-footnote-12' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>13</span> Barnes, Connelly, Eli Shechtman, Adam Finkelstein, and Dan B Goldman. “PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing.” ACM Transactions on Graphics 28, no. 3 (July 27, 2009): 1. <a href='https://doi.org/10.1145/1531326.1531330' target='_blank' class='url'>https://doi.org/10.1145/1531326.1531330</a>.<a name='dfref-footnote-13' href='#ref-footnote-13' title='回到文档' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>14</span> Li, Yijun, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, and Ming-Hsuan Yang. “Universal Style Transfer via Feature Transforms.” ArXiv:1705.08086 [Cs], May 23, 2017. <a href='http://arxiv.org/abs/1705.08086' target='_blank' class='url'>http://arxiv.org/abs/1705.08086</a>.<a name='dfref-footnote-14' href='#ref-footnote-14' title='回到文档' class='reversefootnote' >↩</a></div></div></div>
+</body>
+</html>

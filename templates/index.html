@@ -1,0 +1,87 @@
+{% extends 'base.html' %}{% load static %} {% block nav %} {% if tag_name %}
+<nav>
+    <div class="nav-wrapper light-green">
+        <div class="col s12">
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">{{ tag_name }}</a>
+        </div>
+    </div>
+</nav>
+{% endif %} {% endblock %} {% block content %} {% for article in article_list %} {% ifequal article.type 'TEXT' %}
+<div class="card">
+    <div class="card-content">
+        <a href="{% url 'article_detail' id=article.id %}">
+            <span class="card-title" style="font-weight:bold">{{ article.title }}</span>
+        </a>
+        <p class="orange-text text-lighten-1 ">
+            {{ article.publish_time }}
+        </p>
+        {% for tag in article.tags.all %}
+        <a href="{% url 'article_tag' tag_name=tag %}">
+            <div class="chip light-green white-text">
+                {{ tag }}
+            </div>
+        </a>
+        {% endfor %}
+        <p>{{ article.summary }}</p>
+    </div>
+</div>
+{% else %}
+<div class="parallax-container">
+    <a href="{% url 'article_detail' id=article.id %}">
+        <h2 class="center white-text" style="font-weight:bold">{{ article.title }}</h2>
+    </a>
+    <h5 class=" white-text center " style="font-weight:bold">{{ article.summary }}</h5>
+    <div class="parallax">
+        <img src="{{ article.cover }}" style="width: 100%;">
+    </div>
+</div>
+{% endifequal %} {% endfor %} {% if article_list.has_other_pages %}
+<ul class=" pagination center ">
+    {% if article_list.has_previous %}
+    <li>
+        <a href="?page={{ article_list.previous_page_number }} ">
+            <i class="material-icons ">chevron_left</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled ">
+        <a href="#! ">
+            <i class="material-icons ">chevron_left</i>
+        </a>
+    </li>
+    {% endif %} {% for i in article_list.paginator.page_range %} {% if article_list.number == i %}
+    <li class="active light-green ">
+        <a href="#! ">{{ i }}</a>
+    </li>
+    {% else %}
+    <li class="waves-effect ">
+        <a href="?page={{ i }} " class=" white-text ">{{ i }}</a>
+    </li>
+    {% endif %} {% endfor %} {% if article_list.has_next %}
+    <li>
+        <a href=" ?page={{ article_list.next_page_number }} ">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled ">
+        <a href="#! ">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
+<script>
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+</script>
+<style>
+    .parallax-container {
+        height: 250px;
+        margin: 0.5rem 0 1rem 0;
+    }
+</style>
+{% endblock %}

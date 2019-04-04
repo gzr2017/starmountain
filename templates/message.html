@@ -1,0 +1,58 @@
+{% extends 'base.html' %}{% load static %}{% block nav %}
+<nav>
+    <div class="nav-wrapper light-green">
+        <div class="col s12">
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">消息 Message</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}{% block content %} {% for message in messagelist %}
+<div class="card">
+    <div class="card-content">
+        <div class="chip light-green white-text right">
+            {{ message.publish_time }}
+        </div>
+        <a>
+            <span class="card-title">{% autoescape off %}{{ message.body }}{% endautoescape %}</span>
+        </a>
+    </div>
+</div>
+{% endfor %} {% if messagelist.has_other_pages %}
+<ul class="pagination center">
+    {% if messagelist.has_previous %}
+    <li>
+        <a href="?page={{ messagelist.previous_page_number }}">
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled">
+        <a href="#!">
+
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    {% endif %} {% for i in messagelist.paginator.page_range %} {% if messagelist.number == i %}
+    <li class="active light-green">
+        <a href="#!">{{ i }}</a>
+    </li>
+    {% else %}
+    <li class="waves-effect">
+        <a href="?page={{ i }}" class=" white-text">{{ i }}</a>
+    </li>
+    {% endif %} {% endfor %} {% if messagelist.has_next %}
+    <li>
+        <a href=" ?page={{ messagelist.next_page_number }} ">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled ">
+        <a href="#!">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %} {% endblock %}

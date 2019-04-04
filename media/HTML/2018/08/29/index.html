@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="http://ww2.sinaimg.cn/large/bb11ad77gw1ecz431hqgyj20af0dw74p.jpg" type="image/x-icon">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="http://p2p0dadp7.bkt.clouddn.com/sql.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="input-field col s9">
+                <input id="book_title" type="text" class="validate">
+                <label for="book_title">在此输入书名</label>
+            </div>
+            <div class="col s3">
+                <a class="btn waves-effect waves-light btn-large " onclick="search_title()">查询</a>
+            </div>
+        </div>
+    </div>
+    <table class="highlight centered ">
+        <thead>
+            <tr>
+                <th>书名</th>
+                <th>格式</th>
+                <th>作者</th>
+            </tr>
+        </thead>
+        <tbody id="thefuckingbody">
+        </tbody>
+    </table>
+    <script>
+        search_title();
+        var tableNode;
+        function search_title() {
+            var contents;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://p2p0dadp7.bkt.clouddn.com/metadata.db', true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function (e) {
+                var uInt8Array = new Uint8Array(this.response);
+                var db = new SQL.Database(uInt8Array);
+                var query = document.getElementById("book_title").value;
+                var Q = "select books.title,books.path,authors.name,data.format,data.name from data,books,authors,books_authors_link where title like \"" + "%" + query + "%" + "\" and books.id=books_authors_link.book and authors.id=books_authors_link.author and data.book=books.id";
+                contents = db.exec(Q);
+                console.log(contents[0].values[0][0]);
+                createTable(contents[0].values);
+            };
+            xhr.send();
+        }
+        function createTable(result) {
+            var tableData;
+            tableNode = document.createElement("table");//获得对象
+            for (var i = 0; i < result.length; i++) {
+                tableData += "<tr>"
+                tableData += "<td>" + result[i][0] + "</td>";
+                tableData += "<td>" + result[i][3] + "</td>";
+                tableData += "<td>" + result[i][2] + "</td>";
+                tableData += "</tr>"
+            }
+
+            $("#thefuckingbody").html(tableData);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}{% load static %} {% block nav %}
+<nav>
+    <div class="nav-wrapper light-green">
+        <div class="col s12">
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">搜索“{{ query }}”</a>
+
+        </div>
+    </div>
+</nav>
+
+{% endblock %} {% block content %} {% if query %} {% for result in page.object_list %} {% if result.object.is_message %}
+<div class="card">
+    <div class="card-content">
+        <div class="chip light-green white-text right">
+            {{ result.object.publish_time }}
+        </div>
+        <a>
+            <span class="card-title">{% autoescape off %}{{ result.object.body }}{% endautoescape %}</span>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="card">
+        <div class="card-content">
+            <a href="{% url 'article_detail' id=result.object.id %}">
+                <span class="card-title" style="font-weight:bold">{{ result.object.title }}</span>
+            </a>
+            <p class="orange-text text-lighten-1 ">
+                {{ result.object.publish_time }}
+            </p>
+            {% for tag in result.object.tags.all %}
+            <a href="{% url 'article_tag' tag_name=tag %}">
+                <div class="chip light-green white-text">
+                    {{ tag }}
+                </div>
+            </a>
+            {% endfor %}
+            <p>{{ result.object.summary }}</p>
+        </div>
+    </div>
+{% endif %} {% empty %}
+<h1 class="center white-text" style="font-weight:bold;">WE FOUND NOTHING</h1>
+<!-- <script>
+    M.toast({ html: '再找找其他的吧！', classes: 'rounded' });
+</script>  -->
+
+{% endfor %} {% if page.has_previous or page.has_next %}
+<ul class="pagination center">
+    {% if page.has_previous %}
+    <li>
+        <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled">
+        <a href="#!">
+
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    {% endif %} {% if page.has_next %}
+    <li>
+        <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled ">
+        <a href="#!">
+            <i class="material-icons ">chevron_right</i>
+        </a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %} {% endif %} {% endblock %}

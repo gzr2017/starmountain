@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>starmountain</title>
+    <link rel="icon" href="http://ww2.sinaimg.cn/large/bb11ad77gw1ecz431hqgyj20af0dw74p.jpg" type="image/x-icon">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+</head>
+
+<body class=" light-green lighten-1">
+    <div class="navbar-fixed ">
+        <nav>
+            <div class="nav-wrapper  light-green lighten-1">
+                <a href="{% url 'index' %}" class="brand-logo center" style="font-weight:bold;">starmountain</a>
+                <form method='get' action="/search/" target="_blank" class="right">
+                    <div class="input-field">
+                        <input id="search" type="search" type="text" name="q" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </div>
+    {% block nav %}{% endblock %}
+    <main>
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <div class="card ">
+                    <div class="card-content">
+                        <a href="{% url 'index' %}">
+                            <span class="card-title" style="font-weight:bold">标签 Tags</span>
+                        </a>
+                        {% for tag in tag_list %}
+                        <a href="{% url 'article_tag' tag_name=tag %}">
+                            <div class="chip light-green white-text">
+                                {{ tag }}
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <a href="{% url 'message' %}">
+                            <span class="card-title " style="font-weight:bold">消息 Messages</span>
+                        </a>
+                        <table class="highlight responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>内容</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for message in message_list %}
+                                <tr>
+                                    <td>{{ message.publish_time }}</td>
+                                    <td>{% autoescape off %}{{ message.body }}{% endautoescape %}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'message' %}">更多 MORE</a>
+                    </div>
+                </div>
+                <div class="card ">
+                    <div class="card-content">
+                        <a>
+                            <span class="card-title" style="font-weight:bold">友链 Links</span>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8 l9">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+    </main>
+
+
+    <footer class="page-footer light-green lighten-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text ">₊˚‧(๑σ̴̶̷̥́ ₃σ̴̶̷̀)·˚₊</h5>
+                    <p class="grey-text text-lighten-4 ">陌生人，你好！Hello stranger!</p>
+                    <p class="grey-text text-lighten-4 ">如果你喜欢这个页面的话，你也可以在以下地方找到我</p>
+                    <p class="grey-text text-lighten-4 ">If you like this page, you can also find me</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text ">@</h5>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/starmountain1997/"><img
+                                    src="{% static "images/Instagram.png" %}" width="50%"></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/gzr2017"><img src="{% static "images/GitHub.png" %}"
+                                    width="50%"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <div class="container">
+                鄂ICP备17025013号-1
+                <span class="grey-text text-lighten-4 right">Powered by
+                    <a href="https://www.djangoproject.com" style="font-weight:bold">Django</a> and
+                    <a href="http://materializecss.com" style="font-weight:bold"> Materialize</a>
+                </span>
+
+            </div>
+        </div>
+    </footer>
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+
+            background: #F8FFAE;
+            background: -webkit-linear-gradient(-65deg, #43C6AC, #F8FFAE);
+            background: linear-gradient(-65deg, #43C6AC, #F8FFAE);
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('ul.tabs').tabs();
+        });
+        // 召唤空格之神！
+        pangu.spacingElementByTagName('main');
+        document.addEventListener('DOMContentLoaded', () => {
+            pangu.autoSpacingPage();
+        });
+    </script>
+    <!--Import jQuery before materialize.js-->
+
+</body>
+
+</html>
