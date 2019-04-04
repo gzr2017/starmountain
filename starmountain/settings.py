@@ -36,9 +36,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tp5oo5b!t)_t*(y8w7n(*6zc7v7vk(rzs=x8g@7027fcq&ks+w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ',
+                 '47.102.121.110', 'starmountain.ink']
 
 
 # Application definition
