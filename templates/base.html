@@ -18,21 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 
+
 <body class="light-green lighten-1">
-    <nav class="nav-extended light-green lighten-1">
-        <div class="nav-wrapper">
-            <a href="{% url 'index' %}" class="brand-logo center" style="font-weight:bold;">starmountain</a>
-        </div>
-        <div class="nav-content">
-            <form method='get' action="/search/" target="_blank">
-                <div class="input-field">
-                    <input id="search" type="search" type="text" name="q" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav class="light-green lighten-1">
+            <div class="nav-wrapper">
+                <a href="{% url 'index' %}" class="brand-logo center">starmountain</a>
+            </div>
+        </nav>
+    </div>
     {% block nav %}{% endblock %}
     <main>
         <div class="row">
@@ -42,6 +36,13 @@
                         <a href="{% url 'index' %}">
                             <span class="card-title" style="font-weight:bold">标签 Tags</span>
                         </a>
+                        <form method='get' action="/search/" target="_blank">
+                            <div class="input-field">
+                                <input id="search" type="search" type="text" name="q" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
                         {% for tag in tag_list %}
                         <a href="{% url 'article_tag' tag_name=tag %}">
                             <div class="chip light-green white-text">
