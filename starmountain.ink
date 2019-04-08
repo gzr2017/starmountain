@@ -3,10 +3,6 @@ server {
     listen 80;
     server_name starmountain.ink;
 
-    location /static { ②
-        alias /home/yangxg/sites/demo.zmrenwu.com/django-blog-tutorial/static; 
-    }
-
     location /static {
         alias /home/guozirui/starmountain.ink/starmountain/static;
     }
