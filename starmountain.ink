@@ -13,7 +13,7 @@ server {
 
     location / {
         proxy_set_header Host $host;
-        proxy_pass http: //unix:/tmp/starmountain.ink.socket;
+        proxy_pass http://unix:/tmp/starmountain.ink.socket;
     }
 }
 
