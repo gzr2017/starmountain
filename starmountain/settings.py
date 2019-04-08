@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'POST',
     'taggit',
     'django_cleanup',
+    'sslserver'
 ]
 
 MIDDLEWARE = [
