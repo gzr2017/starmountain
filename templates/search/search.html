@@ -22,25 +22,25 @@
 </div>
 {% else %}
 <div class="card">
-        <div class="card-content">
-            <a href="{% url 'article_detail' id=result.object.id %}">
-                <span class="card-title" style="font-weight:bold">{{ result.object.title }}</span>
-            </a>
-            <p class="orange-text text-lighten-1 ">
-                {{ result.object.publish_time }}
-            </p>
-            {% for tag in result.object.tags.all %}
-            <a href="{% url 'article_tag' tag_name=tag %}">
-                <div class="chip light-green white-text">
-                    {{ tag }}
-                </div>
-            </a>
-            {% endfor %}
-            <p>{{ result.object.summary }}</p>
-        </div>
+    <div class="card-content">
+        <a href="{% url 'article_detail' id=result.object.id %}">
+            <span class="card-title" style="font-weight:bold">{{ result.object.title }}</span>
+        </a>
+        <p class="orange-text text-lighten-1 ">
+            {{ result.object.publish_time }}
+        </p>
+        {% for tag in result.object.tags.all %}
+        <a href="{% url 'article_tag' tag_name=tag %}">
+            <div class="chip light-green white-text">
+                {{ tag }}
+            </div>
+        </a>
+        {% endfor %}
+        <p>{{ result.object.summary }}</p>
     </div>
+</div>
 {% endif %} {% empty %}
-<h1 class="center white-text" style="font-weight:bold;">WE FOUND NOTHING</h1>
+<h1 class="center white-text" style="font-family:'YuLong18ced4277119ad7';">我们什么也没找到</h1>
 <!-- <script>
     M.toast({ html: '再找找其他的吧！', classes: 'rounded' });
 </script>  -->
