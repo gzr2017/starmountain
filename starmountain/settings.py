@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # haystack搜索引擎
@@ -28,7 +27,6 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 7
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -37,25 +35,17 @@ SECRET_KEY = 'tp5oo5b!t)_t*(y8w7n(*6zc7v7vk(rzs=x8g@7027fcq&ks+w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ',
-                 '47.102.121.110', 'starmountain.ink']
-
+ALLOWED_HOSTS = [
+    '127.0.0.1', 'localhost ', '47.102.121.110', 'starmountain.ink'
+]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'haystack',
-    'POST',
-    'taggit',
-    'django_cleanup',
-    'sslserver'
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'haystack',
+    'POST', 'LAB', 'taggit', 'django_cleanup', 'sslserver'
 ]
 
 MIDDLEWARE = [
@@ -88,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'starmountain.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -99,25 +88,27 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -131,7 +122,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

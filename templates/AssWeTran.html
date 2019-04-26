@@ -1,0 +1,124 @@
+{% extends 'base.html' %}{% load static %}{% block nav %}
+<nav>
+    <div class="nav-wrapper light-green">
+        <div class="col s12">
+            <a href="{% url 'index' %}" class="breadcrumb">首页</a>
+            <a href="#!" class="breadcrumb">Ass We Tran</a>
+        </div>
+    </div>
+</nav>
+{% endblock %} {% block content %}
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title center">Ass We Tran ♂
+            <hr>
+        </span>
+        <p class="center">
+            使用Python编写的ass字幕与srt字幕互转工具~
+        </p>
+        <p class="center">
+            双语字幕和各种注解会并在一个event中
+        </p>
+        <p class="center">
+            不用担心外语或者注解显示不全啦
+        </p>
+        <p class="center">
+            对于某些ass文件开头可能会出现乱码
+        </p>
+        <p class="center">
+            如果出现的话可以用记事本或其他文本编辑器手动编辑一下
+        </p>
+        <p class="center">
+            自动识别ass字幕编码，转换后的srt文件为utf-8编码
+        </p>
+        <p class="center">
+            出现问题的话请发邮件给我O(∩_∩)O谢谢！
+        </p>
+
+        {% if notification %}
+        <h4 class="orange-text center">{{ notification }}
+        </h4>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="file-field input-field">
+                <div class="btn light-green">
+                    <span>选择文件</span>
+                    <input type="file" name="myfile">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <button class="btn center light-green" type="submit">
+                <span>上传</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title  center">源码参上
+            <hr>
+        </span>
+        <pre><code>
+                    #!/usr/bin/python3
+                    # -*- coding: UTF-8 -*-
+                    
+                    import chardet
+                    import codecs
+                    import re
+                    import ass
+                    
+                    
+                    SourceFileName = input('请输入文件地址：')
+                    
+                    # 检查文件编码
+                    SourceFile = open(SourceFileName, 'rb')
+                    FileEnco = chardet.detect(SourceFile.read()).get('encoding')
+                    SourceFile.close()
+                    # 按文件编码重新打开文件
+                    SourceFile = codecs.open(SourceFileName, 'rb', FileEnco)
+                    TargetFile = codecs.open(SourceFileName + '.srt', 'w', 'utf-8')
+                    
+                    AssFile = ass.parse(SourceFile)
+                    TimeDic = dict()
+                    
+                    for event in AssFile.events:
+                        if not re.match('//', event.text) and not event.text == '':
+                            StartTime = str(event.start)
+                            EndTime = str(event.end)
+                            StartTime = '0' + StartTime
+                            StartTime = StartTime[:-3]
+                            StartTime = re.sub(r'\.', ',', StartTime)
+                            EndTime = '0' + EndTime
+                            EndTime = EndTime[:-3]
+                            EndTime = re.sub(r'\.', ',', EndTime)
+                            Time = StartTime + ' --> ' + EndTime
+                            SubTitle = re.sub(r'{[^}]*}', '', event.text)
+                            SubTitle = re.sub(r'\\N', '\n', SubTitle)
+                            if not Time in TimeDic.keys():
+                                TimeDic[Time] = SubTitle
+                            else:
+                                TimeDic[Time] = TimeDic[Time] + '\n' + SubTitle
+                    
+                    i = 1
+                    
+                    for key, value in TimeDic.items():
+                        TargetFile.write(str(i))
+                        TargetFile.write('\n')
+                        TargetFile.write(key)
+                        TargetFile.write('\n')
+                        TargetFile.write(value)
+                        TargetFile.write('\n')
+                        TargetFile.write('\n')
+                        i = i + 1
+                    </code></pre>
+    </div>
+
+</div>
+{% endblock %}
