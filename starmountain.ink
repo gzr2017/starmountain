@@ -24,10 +24,3 @@ server {
 
 }
 
-
-server {
-    charset utf-8;
-    listen 80;
-    server_name starmountain.ink;
-    rewrite ^(.*)$ https://${server_name}$1 permanent; 
-}
