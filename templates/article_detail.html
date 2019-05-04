@@ -33,9 +33,19 @@
                     }
                 }
             };
+            function setTarget(self) {
+                var aLinks, aHref;
+                aLinks = self.documment.getElementsByTagName('a');
+                for (var i = 0; i < aLinks.length; i++) {
+                    if (aHref = aLinks[i].getAttribute('href')) {
+                        aLinks[i].setAttribute('target', '_blank');
+                    }
+                }
+            }
             window.onload = function () {
                 setIframeHeight(document.getElementById('external-frame'));
             };
+            document.getElementById('external-frame').onload = setTarget(this);
         </script>
         <iframe src="{{ article.body.url }}" frameborder="0" scrolling="no" id="external-frame"
             onload="setIframeHeight(this)" width="100% "></iframe>
@@ -63,7 +73,6 @@
     $(document).ready(function () {
         $('.parallax ').parallax();
     });
-    $("#external-frame").attr("target", "_blank");
 </script>
 <style>
     .parallax-container {
