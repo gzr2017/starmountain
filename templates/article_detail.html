@@ -36,10 +36,6 @@
             window.onload = function () {
                 setIframeHeight(document.getElementById('external-frame'));
             };
-            var links = document.getElementsByTagName('external-frame');
-            for (var i = 0; i < links.length; i++) {
-                links[i].setAttribute('target', '_top');
-            }
         </script>
         <iframe src="{{ article.body.url }}" frameborder="0" scrolling="no" id="external-frame"
             onload="setIframeHeight(this)" width="100% "></iframe>
@@ -67,6 +63,7 @@
     $(document).ready(function () {
         $('.parallax ').parallax();
     });
+    $("#external-frame").attr("target", "_blank");
 </script>
 <style>
     .parallax-container {
