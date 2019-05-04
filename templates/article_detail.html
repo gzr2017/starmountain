@@ -42,10 +42,6 @@
                     }
                 }
             }
-            window.onload = function () {
-                setIframeHeight(document.getElementById('external-frame'));
-            };
-            document.getElementById('external-frame').onload = setTarget(this);
         </script>
         <iframe src="{{ article.body.url }}" frameborder="0" scrolling="no" id="external-frame"
             onload="setIframeHeight(this)" width="100% "></iframe>
