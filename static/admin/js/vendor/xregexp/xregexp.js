@@ -644,10 +644,10 @@ XRegExp = XRegExp || (function (undef) {
  * // -> ['2', '4', '56']
  *
  * // Passing forward and returning specific backreferences
- * html = '<a href="http://xregexp.com/api/">XRegExp</a>\
- *         <a href="http://www.google.com/">Google</a>';
+ * html = '<a target="_blank" href="http://xregexp.com/api/">XRegExp</a>\
+ *         <a target="_blank" href="http://www.google.com/">Google</a>';
  * XRegExp.matchChain(html, [
- *   {regex: /<a href="([^"]+)">/i, backref: 1},
+ *   {regex: /<a target="_blank" href="([^"]+)">/i, backref: 1},
  *   {regex: XRegExp('(?i)^https?://(?<domain>[^/?#]+)'), backref: 'domain'}
  * ]);
  * // -> ['xregexp.com', 'www.google.com']

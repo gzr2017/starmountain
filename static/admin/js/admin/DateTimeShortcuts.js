@@ -146,13 +146,13 @@
             // <div id="clockbox1" class="clockbox module">
             //     <h2>Choose a time</h2>
             //     <ul class="timelist">
-            //         <li><a href="#">Now</a></li>
-            //         <li><a href="#">Midnight</a></li>
-            //         <li><a href="#">6 a.m.</a></li>
-            //         <li><a href="#">Noon</a></li>
-            //         <li><a href="#">6 p.m.</a></li>
+            //         <li><a target="_blank" href="#">Now</a></li>
+            //         <li><a target="_blank" href="#">Midnight</a></li>
+            //         <li><a target="_blank" href="#">6 a.m.</a></li>
+            //         <li><a target="_blank" href="#">Noon</a></li>
+            //         <li><a target="_blank" href="#">6 p.m.</a></li>
             //     </ul>
-            //     <p class="calendar-cancel"><a href="#">Cancel</a></p>
+            //     <p class="calendar-cancel"><a target="_blank" href="#">Cancel</a></p>
             // </div>
 
             var clock_box = document.createElement('div');
@@ -275,16 +275,16 @@
             //
             // <div id="calendarbox3" class="calendarbox module">
             //     <h2>
-            //           <a href="#" class="link-previous">&lsaquo;</a>
-            //           <a href="#" class="link-next">&rsaquo;</a> February 2003
+            //           <a target="_blank" href="#" class="link-previous">&lsaquo;</a>
+            //           <a target="_blank" href="#" class="link-next">&rsaquo;</a> February 2003
             //     </h2>
             //     <div class="calendar" id="calendarin3">
             //         <!-- (cal) -->
             //     </div>
             //     <div class="calendar-shortcuts">
-            //          <a href="#">Yesterday</a> | <a href="#">Today</a> | <a href="#">Tomorrow</a>
+            //          <a target="_blank" href="#">Yesterday</a> | <a target="_blank" href="#">Today</a> | <a target="_blank" href="#">Tomorrow</a>
             //     </div>
-            //     <p class="calendar-cancel"><a href="#">Cancel</a></p>
+            //     <p class="calendar-cancel"><a target="_blank" href="#">Cancel</a></p>
             // </div>
             var cal_box = document.createElement('div');
             cal_box.style.display = 'none';

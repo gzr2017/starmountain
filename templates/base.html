@@ -24,7 +24,7 @@
     <div class="navbar-fixed">
         <nav class="light-green lighten-1">
             <div class="nav-wrapper">
-                <a href="{% url 'index' %}" class="brand-logo center"
+                <a target="_blank" href="{% url 'index' %}" class="brand-logo center"
                     style="font-family:'YuLong18ced4277119ad7';">星山</a>
             </div>
         </nav>
@@ -35,7 +35,7 @@
             <div class="col s12 m4 l3">
                 <div class="card ">
                     <div class="card-content">
-                        <a href="{% url 'index' %}">
+                        <a target="_blank" href="{% url 'index' %}">
                             <span class="card-title" style="font-weight:bold">检索 Index</span>
                         </a>
                         <div class="nav-wrapper">
@@ -48,7 +48,7 @@
                             </form>
                         </div>
                         {% for tag in tag_list %}
-                        <a href="{% url 'article_tag' tag_name=tag %}">
+                        <a target="_blank" href="{% url 'article_tag' tag_name=tag %}">
                             <div class="chip light-green white-text">
                                 {{ tag }}
                             </div>
@@ -59,7 +59,7 @@
 
                 <div class="card">
                     <div class="card-content">
-                        <a href="{% url 'message' %}">
+                        <a target="_blank" href="{% url 'message' %}">
                             <span class="card-title " style="font-weight:bold">消息 Messages</span>
                         </a>
                         <table class="highlight responsive-table">
@@ -80,30 +80,30 @@
                         </table>
                     </div>
                     <div class="card-action">
-                        <a href="{% url 'message' %}">更多 MORE</a>
+                        <a target="_blank" href="{% url 'message' %}">更多 MORE</a>
                     </div>
                 </div>
                 <div class="card ">
                     <div class="card-content">
-                        <a>
+                        <a target="_blank">
                             <span class="card-title" style="font-weight:bold">友链 Links</span>
                         </a>
-                        <a href="https://ruojunbai.com/">
+                        <a target="_blank" href="https://ruojunbai.com/">
                             <div class="chip light-green white-text">
                                 Ruojun Bai
                             </div>
                         </a>
-                        <a href="http://blog.cugxuan.cn/">
+                        <a target="_blank" href="http://blog.cugxuan.cn/">
                             <div class="chip light-green white-text">
                                 泫
                             </div>
                         </a>
-                        <a href="https://www.ichen.pw/">
+                        <a target="_blank" href="https://www.ichen.pw/">
                             <div class="chip light-green white-text">
                                 ichen
                             </div>
                         </a>
-                        <a href="{% url 'asswetran' %}">
+                        <a target="_blank" href="{% url 'asswetran' %}">
                             <div class="chip light-green white-text">
                                 AssWeTran
                             </div>
@@ -133,12 +133,12 @@
                     <h5 class="white-text ">@</h5>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/starmountain1997/"><img
+                            <a target="_blank" href="https://www.instagram.com/starmountain1997/"><img
                                     src="{% static "images/Instagram.png" %}" width="50%"></a>
                         </li>
                         <li>
-                            <a href="https://github.com/gzr2017"><img src="{% static "images/GitHub.png" %}"
-                                    width="50%"></a>
+                            <a target="_blank" href="https://github.com/gzr2017"><img
+                                    src="{% static "images/GitHub.png" %}" width="50%"></a>
                         </li>
                     </ul>
                 </div>
@@ -148,8 +148,8 @@
             <div class="container">
                 鄂ICP备19009469号-1
                 <span class="grey-text text-lighten-4 right">Powered by
-                    <a href="https://www.djangoproject.com" style="font-weight:bold">Django</a> and
-                    <a href="http://materializecss.com" style="font-weight:bold"> Materialize</a>
+                    <a target="_blank" href="https://www.djangoproject.com" style="font-weight:bold">Django</a> and
+                    <a target="_blank" href="http://materializecss.com" style="font-weight:bold"> Materialize</a>
                 </span>
 
             </div>

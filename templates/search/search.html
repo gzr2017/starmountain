@@ -2,8 +2,8 @@
 <nav>
     <div class="nav-wrapper light-green">
         <div class="col s12">
-            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
-            <a href="#!" class="breadcrumb">搜索“{{ query }}”</a>
+            <a target="_blank" href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a target="_blank" href="#!" class="breadcrumb">搜索“{{ query }}”</a>
 
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="chip light-green white-text right">
             {{ result.object.publish_time }}
         </div>
-        <a>
+        <a target="_blank">
             <span class="card-title">{% autoescape off %}{{ result.object.body }}{% endautoescape %}</span>
         </a>
     </div>
@@ -23,14 +23,14 @@
 {% else %}
 <div class="card">
     <div class="card-content">
-        <a href="{% url 'article_detail' id=result.object.id %}">
+        <a target="_blank" href="{% url 'article_detail' id=result.object.id %}">
             <span class="card-title" style="font-weight:bold">{{ result.object.title }}</span>
         </a>
         <p class="orange-text text-lighten-1 ">
             {{ result.object.publish_time }}
         </p>
         {% for tag in result.object.tags.all %}
-        <a href="{% url 'article_tag' tag_name=tag %}">
+        <a target="_blank" href="{% url 'article_tag' tag_name=tag %}">
             <div class="chip light-green white-text">
                 {{ tag }}
             </div>
@@ -49,26 +49,26 @@
 <ul class="pagination center">
     {% if page.has_previous %}
     <li>
-        <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+        <a target="_blank" href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
     {% else %}
     <li class="disabled">
-        <a href="#!">
+        <a target="_blank" href="#!">
 
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
     {% endif %} {% if page.has_next %}
     <li>
-        <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
+        <a target="_blank" href="?q={{ query }}&amp;page={{ page.next_page_number }}">
             <i class="material-icons ">chevron_right</i>
         </a>
     </li>
     {% else %}
     <li class="disabled ">
-        <a href="#!">
+        <a target="_blank" href="#!">
             <i class="material-icons ">chevron_right</i>
         </a>
     </li>
