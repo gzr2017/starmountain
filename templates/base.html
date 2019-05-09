@@ -24,7 +24,7 @@
     <div class="navbar-fixed">
         <nav class="light-green lighten-1">
             <div class="nav-wrapper">
-                <a target="_blank" href="{% url 'index' %}" class="brand-logo center"
+                <a href="{% url 'index' %}" class="brand-logo center"
                     style="font-family:'YuLong18ced4277119ad7';">星山</a>
             </div>
         </nav>
@@ -35,7 +35,7 @@
             <div class="col s12 m4 l3">
                 <div class="card ">
                     <div class="card-content">
-                        <a target="_blank" href="{% url 'index' %}">
+                        <a href="{% url 'index' %}">
                             <span class="card-title" style="font-weight:bold">检索 Index</span>
                         </a>
                         <div class="nav-wrapper">
@@ -48,7 +48,7 @@
                             </form>
                         </div>
                         {% for tag in tag_list %}
-                        <a target="_blank" href="{% url 'article_tag' tag_name=tag %}">
+                        <a href="{% url 'article_tag' tag_name=tag %}">
                             <div class="chip light-green white-text">
                                 {{ tag }}
                             </div>
@@ -59,7 +59,7 @@
 
                 <div class="card">
                     <div class="card-content">
-                        <a target="_blank" href="{% url 'message' %}">
+                        <a href="{% url 'message' %}">
                             <span class="card-title " style="font-weight:bold">消息 Messages</span>
                         </a>
                         <table class="highlight responsive-table">
@@ -80,12 +80,12 @@
                         </table>
                     </div>
                     <div class="card-action">
-                        <a target="_blank" href="{% url 'message' %}">更多 MORE</a>
+                        <a href="{% url 'message' %}">更多 MORE</a>
                     </div>
                 </div>
                 <div class="card ">
                     <div class="card-content">
-                        <a target="_blank">
+                        <a>
                             <span class="card-title" style="font-weight:bold">友链 Links</span>
                         </a>
                         <a target="_blank" href="https://ruojunbai.com/">

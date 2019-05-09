@@ -2,22 +2,22 @@
 <nav>
     <div class="nav-wrapper light-green">
         <div class="col s12">
-            <a target="_blank" href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
-            <a target="_blank" href="#!" class="breadcrumb">{{ article.title }}</a>
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">{{ article.title }}</a>
         </div>
     </div>
 </nav>
 {% endblock %}{% block content %}
 <div class="card">
     <div class="card-content">
-        <a target="_blank" href="{% url 'article_detail' id=article.id %}">
+        <a href="{% url 'article_detail' id=article.id %}">
             <span class="card-title" style="font-weight:bold">{{ article.title }}</span>
         </a>
         <p class="orange-text text-light-1">
             {{ article.publish_time }}
         </p>
         {% for tag in article.tags.all %}
-        <a target="_blank" href="{% url 'article_tag' tag_name=tag %}">
+        <a href="{% url 'article_tag' tag_name=tag %}">
             <div class="chip light-green white-text">
                 {{ tag }}
             </div>
