@@ -44,7 +44,9 @@
             }
         </script>
         <iframe src="{{ article.body.url }}" frameborder="0" scrolling="no" id="external-frame"
-            onload="setIframeHeight(this)" width="100% "></iframe>
+            onload="setIframeHeight(this)" width="100% ">
+            <base target="_blank" />
+        </iframe>
     </div>
 </div>
 <div class="card">
