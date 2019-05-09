@@ -2,8 +2,8 @@
 <nav>
     <div class="nav-wrapper light-green">
         <div class="col s12">
-            <a target="_blank" href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
-            <a target="_blank" href="#!" class="breadcrumb">消息 Message</a>
+            <a href="{% url 'index' %}" class="breadcrumb">首页 Home</a>
+            <a href="#!" class="breadcrumb">消息 Message</a>
         </div>
     </div>
 </nav>
@@ -13,7 +13,7 @@
         <div class="chip light-green white-text right">
             {{ message.publish_time }}
         </div>
-        <a target="_blank">
+        <a>
             <span class="card-title">{% autoescape off %}{{ message.body }}{% endautoescape %}</span>
         </a>
     </div>
@@ -22,34 +22,34 @@
 <ul class="pagination center">
     {% if messagelist.has_previous %}
     <li>
-        <a target="_blank" href="?page={{ messagelist.previous_page_number }}">
+        <a href="?page={{ messagelist.previous_page_number }}">
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
     {% else %}
     <li class="disabled">
-        <a target="_blank" href="#!">
+        <a href="#!">
 
             <i class="material-icons">chevron_left</i>
         </a>
     </li>
     {% endif %} {% for i in messagelist.paginator.page_range %} {% if messagelist.number == i %}
     <li class="active light-green">
-        <a target="_blank" href="#!">{{ i }}</a>
+        <a href="#!">{{ i }}</a>
     </li>
     {% else %}
     <li class="waves-effect">
-        <a target="_blank" href="?page={{ i }}" class=" white-text">{{ i }}</a>
+        <a href="?page={{ i }}" class=" white-text">{{ i }}</a>
     </li>
     {% endif %} {% endfor %} {% if messagelist.has_next %}
     <li>
-        <a target="_blank" href=" ?page={{ messagelist.next_page_number }} ">
+        <a href=" ?page={{ messagelist.next_page_number }} ">
             <i class="material-icons ">chevron_right</i>
         </a>
     </li>
     {% else %}
     <li class="disabled ">
-        <a target="_blank" href="#!">
+        <a href="#!">
             <i class="material-icons ">chevron_right</i>
         </a>
     </li>
